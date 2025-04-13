@@ -35,7 +35,7 @@ archives:
 
 nfpms:
   - vendor: "go-typer"
-    homepage: "https://github.com/prime-run/go-typer"
+    homepage: "https://github.com/jonesier86/go-typer"
     maintainer: "prime-run"
     description: "go-typer: A typing game in terminal built in go"
     license: "MIT"
