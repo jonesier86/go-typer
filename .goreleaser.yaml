@@ -33,4 +33,35 @@ archives:
       - LICENSE
       - README.md
 
-# Rest of the config remains unchanged...
+nfpms:
+  - vendor: "go-typer"
+    homepage: "https://github.com/prime-run/go-typer"
+    maintainer: "prime-run"
+    description: "go-typer: A typing game in terminal built in go"
+    license: "MIT"
+    formats:
+      - deb
+      - rpm
+    bindir: /usr/bin
+
+checksum:
+  name_template: "checksums.txt"
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^ci:"
+      - "^chore:"
+
+release:
+  github:
+    owner: prime-run
+    name: go-typer
+  prerelease: auto
+  draft: false
