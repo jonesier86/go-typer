@@ -23,7 +23,7 @@ builds:
       - goos: darwin
         goarch: "386"
       - goos: windows
-        goarch: arm64  # Add if Windows ARM isn't supported
+        goarch: arm64  # Keep if Windows ARM isn't supported
 
 archives:
   - format: tar.gz
@@ -45,10 +45,9 @@ nfpms:
       - deb
       - rpm
     bindir: /usr/bin
-    # Add architecture mappings for packages
-    replacements:
-      amd64: x86_64
-      386: i386
+    # Updated architecture mappings for packages
+    file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}_{{ .Os }}"
+    arch: "{{ replace (replace (replace .Arch `amd64` `x86_64`) `386` `i386`) `arm64` `arm64` }}"
 
 checksum:
   name_template: "checksums.txt"
